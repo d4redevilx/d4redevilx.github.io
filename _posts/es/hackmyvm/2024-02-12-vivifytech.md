@@ -4,18 +4,9 @@ date: 2024-02-12T18:36:32-03:00
 permalink: /posts/hackmyvm/:title/
 categories: ["Writeups", "HackMyVm"]
 tags: ['Linux', 'Information disclosure', 'CMS', 'Wordpress', 'sudo', 'git']
+image:
+  path: /assets/img/hmvm/vivifytech/vivifytech-0.png
 ---
-
-![VivifyTech](/assets/img/hmvm/vivifytech/vivifytech.png)
-
-|Nombre|VM Info|
-|---|---|
-|**Sistema operativo**|Linux|
-|**Dificultad**|Fácil|
-|**Fecha de lanzamiento**|2023-12-28|
-|**Máquina**|[VivifyTech](https://hackmyvm.eu/machines/machine.php?vm=VivifyTech)|
-|**Creador**|[Sancelisso](https://sancelisso.github.io/)|
-|**Plataforma**|[HackMyVM](https://hackmyvm.eu/)|
 
 # Introducción
 
