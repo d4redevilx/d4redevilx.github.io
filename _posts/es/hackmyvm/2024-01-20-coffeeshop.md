@@ -4,26 +4,16 @@ date: 2024-01-20T16:30:45-03:00
 categories: ["Writeups", "HackMyVm"]
 permalink: /posts/hackmyvm/:title/
 tags: ['Linux', 'CTF', 'sudo', 'cron', 'crontab', 'ruby']
+image:
+  path: /assets/img/hmvm/coffeeshop/coffeeshop-0.png
 ---
 
-![CoffeeShop](/assets/img/hmvm/coffeeshop/coffeeshop.png)
-_CoffeeShop_
-
-|Nombre|VM Info|
-|---|---|
-|**Sistema operativo**|Linux|
-|**Dificultad**|Fácil|
-|**Fecha de lanzamiento**|2024-01-15|
-|**Máquina**|[CoffeShop](https://hackmyvm.eu/machines/machine.php?vm=CoffeShop)|
-|**Creador**|[MrMidnight](https://www.youtube.com/@mrmidnight7331)|
-|**Plataforma**|[HackMyVM](https://hackmyvm.eu/)|
-
-# Introducción
+¡Hola, hacker! ¡Bienvenido a un nuevo post!
 
 En este artículo, llevaremos a cabo la resolución de la máquina [CoffeeShop](https://hackmyvm.eu/machines/machine.php?vm=CoffeeShop) de la plataforma HackMyVM.
 La máquina presenta un sitio web en el puerto 80 con un formulario de inicio de sesión. Sin embargo, carecemos de credenciales y no podemos registrarnos de manera convencional. Realizando una enumeración con web fuzzing, descubrimos un subdominio que revela credenciales, las cuales aprovechamos para iniciar sesión en el sitio web. Una vez dentro, obtenemos nuevas credenciales que nos permiten acceder al servidor a través de SSH. Posteriormente, debemos realizar un movimiento lateral hacia otro usuario, aprovechando una tarea programada mediante cron. Finalmente, explotamos una mala configuración de `sudo` para elevar nuestros privilegios y completar la escalada de privilegios con éxito.
 
-# Reconocimiento
+## Reconocimiento
 
 Comenzamos lanzando una traza ICMP a la máquina objetivo para comprobar que tengamos conectividad.
 

@@ -8,13 +8,12 @@ image:
   path: /assets/img/hmvm/vivifytech/vivifytech-0.png
 ---
 
-# Introducción
-
 ¡Hola, hacker! ¡Bienvenido a un nuevo post!
 
-En este artículo, nos adentraremos en la resolución de la máquina [VivifyTech](https://hackmyvm.eu/machines/machine.php?vm=VivifyTech) de la plataforma HackMyVM. Comenzaremos aprovechando una filtración de contraseñas y una lista de usuarios para llevar a cabo un ataque de fuerza bruta al protocolo SSH y obtener acceso a la máquina como el usuario `sarah`. A continuación, realizamos un movimiento lateral para obtener acceso como el usuario `gbodja` al encontrar su contraseña en un archivo de texto plano. Finalmente, aprovechamos una configuración inadecuada de `sudo` para elevar nuestros privilegios, logrando así una exitosa escalada de privilegios.
+En este artículo, estaremos resolviendo la máquina [VivifyTech](https://hackmyvm.eu/machines/machine.php?vm=VivifyTech) de la plataforma HackMyVM. Comenzaremos aprovechando una filtración de contraseñas y una lista de usuarios para llevar a cabo un ataque de fuerza bruta al protocolo SSH y obtener acceso a la máquina como el usuario `sarah`. A continuación, realizamos un movimiento lateral para obtener acceso como el usuario `gbodja` al encontrar su contraseña en un archivo de texto plano. Finalmente, aprovechamos una configuración inadecuada de `sudo` para elevar nuestros privilegios, logrando así una exitosa escalada de privilegios.
 
-# Reconocimiento
+
+## Reconocimiento
 
 Comenzamos lanzando una traza ICMP a la máquina objetivo para comprobar que tengamos conectividad.
 

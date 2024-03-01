@@ -4,26 +4,15 @@ date: 2024-02-03T14:02:36-03:00
 permalink: /posts/hackmyvm/:title/
 categories: ["Writeups", "HackMyVm"]
 tags: ['Linux', 'base64', 'bcrpyt', 'sudo', 'vim']
+image:
+  path: /assets/img/hmvm/whitedoor/whitedoor-0.png
 ---
-
-![Whitedoor](/assets/img/hmvm/whitedoor/whitedoor.png)
-
-|Nombre|VM Info|
-|---|---|
-|**Sistema operativo**|Linux|
-|**Dificultad**|Fácil|
-|**Fecha de lanzamiento**|2023-12-15|
-|**Máquina**|[Whitedoor](https://hackmyvm.eu/machines/machine.php?vm=Whitedoor)|
-|**Creador**|[Pylon](https://pylonet.github.io/)|
-|**Plataforma**|[HackMyVM](https://hackmyvm.eu/)|
-
-# Introducción
 
 ¡Hola, hacker! ¡Bienvenido a un nuevo post!
 
 En este artículo, abordaremos la resolución de la máquina [Whitedoor](https://hackmyvm.eu/machines/machine.php?vm=Whitedoor) de la plataforma HackMyVM. La máquina aloja un sitio web que presenta un formulario con un campo de entrada, el cual nos concede la capacidad de ejecutar comandos del sistema sin previa validación. De este modo, conseguimos acceso al sistema como el usuario `www-data`. A continuación, realizamos un movimiento lateral para obtener acceso como el usuario `whiteshell` al descifrar una contraseña codificada en base64, la cual encontramos en un archivo de texto plano. Posteriormente, nos enfrentamos al desafío de romper un hash codificado presente en un archivo `.txt`. Finalmente, aprovechamos una configuración inadecuada de `sudo` para elevar nuestros privilegios, logrando así una exitosa escalada de privilegios.
 
-# Reconocimiento
+## Reconocimiento
 
 Comenzamos lanzando una traza ICMP a la máquina objetivo para comprobar que tengamos conectividad.
 
