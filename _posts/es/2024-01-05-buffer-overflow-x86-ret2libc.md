@@ -5,8 +5,6 @@ categories: ["Fundamentos"]
 tags: ["Buffer Overflow x86", "ret2libc", "Linux"]
 ---
 
-## Introducción
-
 En este post, estaremos llevando a cabo la explotación de un buffer overflow sobre un binario de 32 bits, aplicando la técnica Ret2libc.
 
 > Antes de llevar a cabo la explotación del Buffer Overflow, es importante tener claro algunos conceptos. Para lo cual, te invito a leer antes el siguiente [post](https://d4redevilx.github.io/posts/pentesting/buffer-overflow) y luego retomar la lectura de este.
