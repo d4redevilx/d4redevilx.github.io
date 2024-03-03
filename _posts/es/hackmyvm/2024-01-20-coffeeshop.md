@@ -20,7 +20,7 @@ Comenzamos lanzando una traza ICMP a la máquina objetivo para comprobar que ten
 ![CoffeeShop](/assets/img/hmvm/coffeeshop/coffeeshop-1.png)
 _Reconocimento usando el comando ping_
 
-Vemos que responde al envio de nuestro paquete, verificando de esta manera que tenemos conectividad. Por otra parte, confirmamos que estamos frente a una máquina Linux basandonos en el TTL (Time To Live).
+Vemos que responde al envío de nuestro paquete, verificando de esta manera que tenemos conectividad. Por otra parte, confirmamos que estamos frente a una máquina Linux basandonos en el TTL (Time To Live).
 
 ## Enumeración
 
