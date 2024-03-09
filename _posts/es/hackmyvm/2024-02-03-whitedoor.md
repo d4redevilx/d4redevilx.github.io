@@ -3,7 +3,7 @@ title: 'Whitedoor'
 date: 2024-02-03T14:02:36-03:00
 permalink: /posts/hackmyvm/:title/
 categories: ["Writeups", "HackMyVm"]
-tags: ['Linux', 'base64', 'bcrpyt', 'sudo', 'vim']
+tags: ['Linux', 'CTF', 'base64', 'bcrpyt', 'sudo', 'vim']
 image:
   path: /assets/img/hmvm/whitedoor/whitedoor-0.png
 ---

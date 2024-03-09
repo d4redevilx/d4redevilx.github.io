@@ -3,7 +3,7 @@ title: 'VivifyTech'
 date: 2024-02-12T18:36:32-03:00
 permalink: /posts/hackmyvm/:title/
 categories: ["Writeups", "HackMyVm"]
-tags: ['Linux', 'Information disclosure', 'CMS', 'Wordpress', 'sudo', 'git']
+tags: ['Linux', 'CTF', 'Information disclosure', 'CMS', 'Wordpress', 'sudo', 'git']
 image:
   path: /assets/img/hmvm/vivifytech/vivifytech-0.png
 ---
