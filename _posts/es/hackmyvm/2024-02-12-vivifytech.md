@@ -32,7 +32,7 @@ nmap -sS -p- --open --min-rate 5000 -Pn -n 192.168.1.14 -vvv -oG scanPorts
 ![VivifyTech](/assets/img/hmvm/vivifytech/vivifytech-2.png)
 _Descubrimiento de puertos abiertos_
 
-> ver la [Cheatsheet](/cheatsheet) para más detalle sobre los parámetros utilizados.
+> ver la [Cheatsheet](/cheatsheet/#22-nmap) para más detalle sobre los parámetros utilizados.
 {: .prompt-info }
 
 ### Enumeración de versión y servicio
@@ -46,7 +46,7 @@ nmap -sCV -p22,80 -vvv -oN targeted 192.168.1.14
 ![VivifyTech](/assets/img/hmvm/vivifytech/vivifytech-2.png)
 _Descubrimiento de versión y servicio con nmap_
 
-> ver la [Cheatsheet](/cheatsheet) para más detalle sobre los parámetros utilizados.
+> ver la [Cheatsheet](/cheatsheet/#22-nmap) para más detalle sobre los parámetros utilizados.
 {: .prompt-info }
 
 ## Explotación
