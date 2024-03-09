@@ -18,7 +18,7 @@ Comenzamos lanzando una traza ICMP a la máquina objetivo para comprobar que ten
 ![VivifyTech](/assets/img/hmvm/vivifytech/vivifytech-1.png)
 _Reconocimento usando el comando ping_
 
-Podemos observar, que responde al envio de nuestro paquete, verificando de esta manera que tenemos conectividad. Por otra parte, confirmamos que estamos frente a una máquina Linux basandonos en el TTL (Time To Live).
+Podemos observar, que responde al envío de nuestro paquete, verificando de esta manera que tenemos conectividad. Por otra parte, confirmamos que estamos frente a una máquina Linux basandonos en el TTL (Time To Live).
 
 ## Enumeración
 

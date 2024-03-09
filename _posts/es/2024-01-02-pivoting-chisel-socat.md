@@ -133,7 +133,7 @@ Nos ponemos en escucha con `nc` en el puerto 111 para recibir la reverse shell d
 
 ![Reverse Shell Máquina 2](/assets/img/pivoting/13.png "Reverse Shell Máquina 2")
 
-Accedemos por ssh a la máquina 2 y enviamos la reverse shell a la máquina 1, donde socat se encargara de realizar el envio.
+Accedemos por ssh a la máquina 2 y enviamos la reverse shell a la máquina 1, donde socat se encargara de realizar el envío.
 
 ![Acceso por ssh a la Máquina 2](/assets/img/pivoting/14.png "Acceso por ssh a la Máquina 2")
 
